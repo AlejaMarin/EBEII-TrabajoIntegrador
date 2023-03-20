@@ -150,6 +150,23 @@ Por ende, ya configurado Feign, se hace uso de él. De acuerdo al Enunciado 2 de
 En conclusión, habiendo realizado los ejercicios propuestos, se realiza la exportación para generar el archivo JSON desde la consola de Keycloak. Sin embargo; hay un obstáculo y es que Keycloak no exporta los usuarios creados. Así que, para intentar "remediar" está situación, planteo las siguientes alternativas:
 > [***JSON***](/realm-export.json)
 
- - Podemos guardar los usuarios "manualmente" a través de Postman, enviando un petición POST al endpoint del [UserController](/users-service\src\main\java\com\digitalmedia\users\controller\UserController.java) que está en el método creado para este fin, llamado `saveUser` (línea 58). Este método consiste en recibir en el cuerpo un objeto de tipo `User`, y a traves del repositorio de Mongo almacenarlo en la Base de Datos. En la colección de Postman, esta petición es llamada "Save MongoUser". Ahora bien, esto no resuelve en sí nuestro problema, ya que solo estamos guardando los usuarios en la Base de Datos de users-service; más no lo estamos persistiendo en Keycloak.
+ - Podemos guardar los usuarios "manualmente" a través de Postman, enviando un petición POST al endpoint del [UserController](/users-service\src\main\java\com\digitalmedia\users\controller\UserController.java) que está en el método creado para este fin, llamado `saveUser` (línea 58). Este método consiste en recibir en el cuerpo un objeto de tipo `User`, y a traves del repositorio de Mongo almacenarlo en la Base de Datos. En la [colección de Postman](/Postman/EBEII.postman_collection.json), esta petición es llamada "Save MongoUser". Ahora bien, esto no resuelve en sí nuestro problema, ya que solo estamos guardando los usuarios en la Base de Datos de users-service; más no lo estamos persistiendo en Keycloak.
  - Es por ello, que se me ocurrió hacer uso del Repositorio de Keycloak. Es decir, hacer uso de las funciones que nos provee la Admin REST API. En el [KeycloakRepository](/users-service/src/main/java/com/digitalmedia/users/repository/KeycloakRepository.java) creé un método llamado `createUser` (línea 26) que recibe como argumento un objetivo de tipo User, el cual posteriormente voy a solicitar como cuerpo en el Controller. Este método setea los atributos de User en un objeto de tipo UserRepresentation, y posteriormente setea una contraseña -en este caso, todo usuario creado siempre va a tener la misma contraseña ("digitalmedia"), para finalmente crear el usuario en nuestro reino de Keycloak. Ya desde Postman, realizamos la solicitud POST al endpoint que definí en el [UserController](/users-service\src\main\java\com\digitalmedia\users\controller\UserController.java) (línea 72); si obtenemos como respuesta un código 201, significa que nuestro usuario se creo correctamente y lo podemos ya visualizar desde la consola de Keycloak.
    - **P.D.** Al crear usuarios desde el repositorio de Keycloak, no le estamos asociando un grupo; por lo cual, estando ya en la consola de Keycloak, podemos asignarlo.
+ - Por otra parte, otra forma de crear a un usuario es a traves de Postman, enviando una petición POST a la URL: `http://localhost:8082/admin/realms/DigitalMedia/users`, enviando en el cuerpo un objeto de tipo UserRepresentation, así como también EL JWT de Autorización que tenga permisos de **admin** para gestionar usuarios. Con esta forma, se tiene la ventaja de que podemos agregar los parámetros que deseemos, entre ellos, el grupo al que queremos que nuestro usuario pertenezca (evidentemente, el grupo debe estar previamente creado o importado). A manera de ejemplo, tal como en la petición "Create User (Admin Only)" de la [colección de Postman](/Postman/EBEII.postman_collection.json), el objeto UserRepresentation se puede estructurar así:
+
+         {
+            "username": "Jhon",
+            "email": "jhon@digitalmedia.com",
+            "firstName": "Jhon",
+            "lastName": "dm",
+            "enabled": true,
+            "credentials": [
+               {
+                     "temporary": false,
+                     "type": "password",
+                     "value": "jhon"
+               }
+            ],
+            "groups": ["client"]
+         }

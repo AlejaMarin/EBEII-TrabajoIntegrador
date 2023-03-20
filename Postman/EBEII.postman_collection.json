@@ -1,0 +1,505 @@
+{
+	"info": {
+		"_postman_id": "6fc760a5-d942-410b-88b1-396efa33e8b6",
+		"name": "EBEII",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20454160"
+	},
+	"item": [
+		{
+			"name": "OpenID Connect Discovery",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/realms/DigitalMedia/.well-known/openid-configuration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"realms",
+						"DigitalMedia",
+						".well-known",
+						"openid-configuration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "microservicios",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "o4qr0tJsbARPAGvPunIJ1RtY0VKZ4EQK",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8085",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8082/realms/DigitalMedia/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"realms",
+						"DigitalMedia",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzMTAzNWUwNi00OWNkLTQ2NzktYmU3MC1lODlmY2NiZjUyN2UifQ.eyJleHAiOjE2Nzg1OTIyNTIsImlhdCI6MTY3ODU5MTk1MiwianRpIjoiOTliNTA5YzAtYWQ5NC00MDA5LWJjZmEtM2I4OTM0MmY2MzE3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgyL3JlYWxtcy9EaWdpdGFsTWVkaWEiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwODIvcmVhbG1zL0RpZ2l0YWxNZWRpYSIsInN1YiI6IjkxN2ExMmU5LWYwYzctNGFmOC1hMjhhLThlYzExM2E1MTE3ZiIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJtaWNyb3NlcnZpY2lvcyIsInNlc3Npb25fc3RhdGUiOiJkZTRiM2M0OC0wYjVkLTQ1MGUtOTA5Zi1mNTAzOWQzZTk3OTgiLCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJkZTRiM2M0OC0wYjVkLTQ1MGUtOTA5Zi1mNTAzOWQzZTk3OTgifQ.7C2QDfYq7hWiBouGi_4mwAMrM-uLEXYcADBZceLdDJw",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "microservicios",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "o4qr0tJsbARPAGvPunIJ1RtY0VKZ4EQK",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8082/realms/DigitalMedia/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"realms",
+						"DigitalMedia",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItbFVfdXNqbGpZZTVVR0N3ZVVVcFRjYVZsSU1od1RKZ0Jkd1JrQXliUHJNIn0.eyJleHAiOjE2NzcxOTY2NDgsImlhdCI6MTY3NzE5NjM0OCwianRpIjoiNDQ3ZTAyMGEtMjk0ZS00OGY2LTkxMjktYWFiNDFmNzhjN2JjIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9lcXVpcG8tMTAiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiZjRlMzI5NmYtZDc0MS00NjI1LWJlZWItMjc0MGMzMDY1ZjZhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZTEwIiwic2Vzc2lvbl9zdGF0ZSI6ImVjYmQyMzM4LWYxNTItNGU5MC04MWFkLTkyZWVlOTlmYjYzYSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiLyoiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtZXF1aXBvLTEwIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6ImVjYmQyMzM4LWYxNTItNGU5MC04MWFkLTkyZWVlOTlmYjYzYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEifQ.fCy8flp7k7uMKFgcn8HhR8iPh92mrJOXfeCn0GdLrvguroiiFPgDTokpzfUEM8FdtGKIeO8AQLUnsAD2xRJYztvm6fiOgU26AuN-E6eGKcogOehOzI_592TGnbg769JFf-HL9I733I7jGugPWNy_ehUTC_RiumuKfmi2E-A6WT2ZlIK1VZk-Io-rBRaQhK0EAjB_rVJlvb66QnO4rnaMchnw7DVj6Af_JSVd_CxZMx-oo19Zm7Hxaio_oVUX8DUriyicTnsEsBxOWdZQrZuUa_N8N8s_ZlQsn7-Ku1gUKsGgV-xmmQLcQsQwQeKjodIuKhExdCpvNfqZYCbLVXcdbQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/realms/equipo-10/protocol/openid-connect/userinfo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"equipo-10",
+						"protocol",
+						"openid-connect",
+						"userinfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/realms/digital-house/protocol/openid-connect/logout?id_token=eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJaSlFUa0w4UjBiSGYzaWFkTFNlVF9HMGVYZ3FzREVfbXVhc1R6UmVTX3RjIn0.eyJleHAiOjE2NzY1NzQ0MDUsImlhdCI6MTY3NjU3NDEwNSwiYXV0aF90aW1lIjoxNjc2NTczMzc5LCJqdGkiOiI0MjZlZTE0NS1iZTdkLTQ4MDgtODI1MC0yNWY1MmZhZDIxYzgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2RpZ2l0YWwtaG91c2UiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiZGRjYjQ2YTgtOGEwNi00ZTRlLTkyYmEtNDhkNTUyNzYzZGJmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoib2lkYy1wb3N0bWFuIiwic2Vzc2lvbl9zdGF0ZSI6ImM5YmIzZWNlLTgxZmUtNDg0ZC1iNjY4LTM1MTY1OWMwYzUzZiIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDgwIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtZGlnaXRhbC1ob3VzZSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgZW1haWwgcm9sZXMgcHJvZmlsZSIsInNpZCI6ImM5YmIzZWNlLTgxZmUtNDg0ZC1iNjY4LTM1MTY1OWMwYzUzZiIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6ImRpZ2l0YWxob3VzZSB1c2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlci0xIiwiZ2l2ZW5fbmFtZSI6ImRpZ2l0YWxob3VzZSIsImZhbWlseV9uYW1lIjoidXNlciIsImVtYWlsIjoidXNlci0xQGRpZ2l0YWxob3VzZS5jb20ifQ.FnyBbGrgxUsVKM7Rry-8RuhMSHyB8mOIJBP4Q7RNc9PpUaqRKfnzw2qCYleo37xsZwWE_-vf0l2E4uEkYdmNt7LlbYlO3su4FMq3F3M6jb7B-9vzqBiyCjnltHtGRrFuVlSbFpafflgBg7EINZxM0qnNlWHJVyGEY6zhNrgdXy-qaKVvVJtnNCusrdTVqV3WgAGZtgojgJ3a19b8yiLmvyCr4eyQGQGZxaXKf4LPqAAudN4ezZN_3LnDqguhqcAvntf65lJeL-x_aRdXcjnq6mRRWH_rC1mDaGvc8YDA6F_8Gcn2ZLNJZ6mnzkkHbKm0NUI6BtTSTpPeHwmqmJkysQ",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"digital-house",
+						"protocol",
+						"openid-connect",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "id_token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJaSlFUa0w4UjBiSGYzaWFkTFNlVF9HMGVYZ3FzREVfbXVhc1R6UmVTX3RjIn0.eyJleHAiOjE2NzY1NzQ0MDUsImlhdCI6MTY3NjU3NDEwNSwiYXV0aF90aW1lIjoxNjc2NTczMzc5LCJqdGkiOiI0MjZlZTE0NS1iZTdkLTQ4MDgtODI1MC0yNWY1MmZhZDIxYzgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2RpZ2l0YWwtaG91c2UiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiZGRjYjQ2YTgtOGEwNi00ZTRlLTkyYmEtNDhkNTUyNzYzZGJmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoib2lkYy1wb3N0bWFuIiwic2Vzc2lvbl9zdGF0ZSI6ImM5YmIzZWNlLTgxZmUtNDg0ZC1iNjY4LTM1MTY1OWMwYzUzZiIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDgwIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtZGlnaXRhbC1ob3VzZSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgZW1haWwgcm9sZXMgcHJvZmlsZSIsInNpZCI6ImM5YmIzZWNlLTgxZmUtNDg0ZC1iNjY4LTM1MTY1OWMwYzUzZiIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6ImRpZ2l0YWxob3VzZSB1c2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlci0xIiwiZ2l2ZW5fbmFtZSI6ImRpZ2l0YWxob3VzZSIsImZhbWlseV9uYW1lIjoidXNlciIsImVtYWlsIjoidXNlci0xQGRpZ2l0YWxob3VzZS5jb20ifQ.FnyBbGrgxUsVKM7Rry-8RuhMSHyB8mOIJBP4Q7RNc9PpUaqRKfnzw2qCYleo37xsZwWE_-vf0l2E4uEkYdmNt7LlbYlO3su4FMq3F3M6jb7B-9vzqBiyCjnltHtGRrFuVlSbFpafflgBg7EINZxM0qnNlWHJVyGEY6zhNrgdXy-qaKVvVJtnNCusrdTVqV3WgAGZtgojgJ3a19b8yiLmvyCr4eyQGQGZxaXKf4LPqAAudN4ezZN_3LnDqguhqcAvntf65lJeL-x_aRdXcjnq6mRRWH_rC1mDaGvc8YDA6F_8Gcn2ZLNJZ6mnzkkHbKm0NUI6BtTSTpPeHwmqmJkysQ"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJaUnF0Q1RXYjhjSFRfZkVCaVF0SGFXalZYS3lseVIwd0llSXBNSzc1WUNRIn0.eyJleHAiOjE2Nzg2NjYwMDcsImlhdCI6MTY3ODY2NTcwNywianRpIjoiNTBiMmY4OTgtNjEzZS00ZDNjLThmNDMtYTQyMzdiM2NhMTU1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgyL3JlYWxtcy9EaWdpdGFsTWVkaWEiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiNGMyYzdmYjMtM2JkYi00YTFjLWFlMWItYTI1NmZhMmI1ZTU0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibWljcm9zZXJ2aWNpb3MiLCJzZXNzaW9uX3N0YXRlIjoiMmVkYzg4YTgtNWRkYy00MjdkLTk1NWItZmMzNmNiN2FhYzMyIiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWRpZ2l0YWxtZWRpYSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiIyZWRjODhhOC01ZGRjLTQyN2QtOTU1Yi1mYzM2Y2I3YWFjMzIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJhZG1pbiBkbSIsImdyb3VwcyI6WyIvYWRtaW4iXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW4iLCJnaXZlbl9uYW1lIjoiYWRtaW4iLCJmYW1pbHlfbmFtZSI6ImRtIiwiZW1haWwiOiJhZG1pbkBkaWdpdGFsbWVkaWEuY29tIn0.Z-FoLLPkVnwGk5o-jcNbOcJr6L9ajhyZwuHgOVLkIa1vUkUkI2PBiQtvBXFrBDd1SUaqpfUxcnpkCNX6q8po3pViid1ZXyrLp_4kXs12Oy2opPnGkaMA3s1h-n8hzGFEWJ6gDJV1b6fq4_7YLOQLIoZ6yfCFI3D9Wuj4Yuql0xv6eRoOy9GFiBY7Me58KrJ1aJJmz1ZYKw2EuJi_DXrPYEq8sevVdoJ6i5OEmW1S_QEWEWkzRW6B7jlftQkSNKSklsFFc1tMqx-kl-PQXUN5l7h8n2dRuH6oIQ7p17Q17rt8dWKfNNzzznl8wmQrG1-wofv27S4KE55MaiWlouCmjg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8085/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJaUnF0Q1RXYjhjSFRfZkVCaVF0SGFXalZYS3lseVIwd0llSXBNSzc1WUNRIn0.eyJleHAiOjE2Nzg2NjYwMDcsImlhdCI6MTY3ODY2NTcwNywianRpIjoiNTBiMmY4OTgtNjEzZS00ZDNjLThmNDMtYTQyMzdiM2NhMTU1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgyL3JlYWxtcy9EaWdpdGFsTWVkaWEiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiNGMyYzdmYjMtM2JkYi00YTFjLWFlMWItYTI1NmZhMmI1ZTU0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibWljcm9zZXJ2aWNpb3MiLCJzZXNzaW9uX3N0YXRlIjoiMmVkYzg4YTgtNWRkYy00MjdkLTk1NWItZmMzNmNiN2FhYzMyIiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWRpZ2l0YWxtZWRpYSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiIyZWRjODhhOC01ZGRjLTQyN2QtOTU1Yi1mYzM2Y2I3YWFjMzIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJhZG1pbiBkbSIsImdyb3VwcyI6WyIvYWRtaW4iXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW4iLCJnaXZlbl9uYW1lIjoiYWRtaW4iLCJmYW1pbHlfbmFtZSI6ImRtIiwiZW1haWwiOiJhZG1pbkBkaWdpdGFsbWVkaWEuY29tIn0.Z-FoLLPkVnwGk5o-jcNbOcJr6L9ajhyZwuHgOVLkIa1vUkUkI2PBiQtvBXFrBDd1SUaqpfUxcnpkCNX6q8po3pViid1ZXyrLp_4kXs12Oy2opPnGkaMA3s1h-n8hzGFEWJ6gDJV1b6fq4_7YLOQLIoZ6yfCFI3D9Wuj4Yuql0xv6eRoOy9GFiBY7Me58KrJ1aJJmz1ZYKw2EuJi_DXrPYEq8sevVdoJ6i5OEmW1S_QEWEWkzRW6B7jlftQkSNKSklsFFc1tMqx-kl-PQXUN5l7h8n2dRuH6oIQ7p17Q17rt8dWKfNNzzznl8wmQrG1-wofv27S4KE55MaiWlouCmjg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imdbId\": \"tt0110912\",\r\n    \"title\": \"Pulp Fiction\",\r\n    \"director\": \"Quentin Tarantino\",\r\n    \"year\": 1994,\r\n    \"poster\": \"https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1055_.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8085/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bills",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJaUnF0Q1RXYjhjSFRfZkVCaVF0SGFXalZYS3lseVIwd0llSXBNSzc1WUNRIn0.eyJleHAiOjE2Nzg2ODAyMTgsImlhdCI6MTY3ODY3OTkxOCwianRpIjoiNzVkZDViMWEtY2YxYS00ZDNkLTk1YTYtYzFmNjUzOWU2NzhiIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgyL3JlYWxtcy9EaWdpdGFsTWVkaWEiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiOTE3YTEyZTktZjBjNy00YWY4LWEyOGEtOGVjMTEzYTUxMTdmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibWljcm9zZXJ2aWNpb3MiLCJzZXNzaW9uX3N0YXRlIjoiM2RhNDg1OTktMWY2YS00MzU3LThjMTMtYjRkNDVmYTVlMDFiIiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWRpZ2l0YWxtZWRpYSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiIzZGE0ODU5OS0xZjZhLTQzNTctOGMxMy1iNGQ0NWZhNWUwMWIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJjbGllbnQgZG0iLCJncm91cHMiOlsiL2NsaWVudCJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJjbGllbnQiLCJnaXZlbl9uYW1lIjoiY2xpZW50IiwiZmFtaWx5X25hbWUiOiJkbSIsImVtYWlsIjoiY2xpZW50QGRpZ2l0YWxtZWRpYS5jb20ifQ.pRNJvRdKXJSsThB0lxuTszaP_BKqo_1WMRX4wuSifxUdhMG8Yg9TNsdWvH4G0dF4g7yfMR9NkWFTC-xJc3w_hM1G7G_P5B6vij_K9Yti8d-0PTIn0OxMrQgUaoc_luFmUmI9zu7Gxp06OyirKQ6gmYmOmBRt0TiCG4mL8TM95wxH4aGcSu63wNzCjVFir_IaaftH9vd7wUjIwhyJ6KrWuZyO1mk7mf7zBPmLeIQpSIRyISRjFQ6qCP2Jtypdx3sutODB9O09RlyURWGconugq82_10d34OL6wPmFWchs9ZWfTL2_oiTYXUVwVymJG5vsl3zfL6J8XaxXEEXANKAksw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/bills/findBy?customer=Michael",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"bills",
+						"findBy"
+					],
+					"query": [
+						{
+							"key": "customer",
+							"value": "Michael"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get No Admin Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJaUnF0Q1RXYjhjSFRfZkVCaVF0SGFXalZYS3lseVIwd0llSXBNSzc1WUNRIn0.eyJleHAiOjE2Nzg2Nzg0MzgsImlhdCI6MTY3ODY3ODEzOCwianRpIjoiMTk5MmZmMzUtNDVhZC00ZTg5LWI2NDAtZWRjMzU1ZDJiNzBmIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgyL3JlYWxtcy9EaWdpdGFsTWVkaWEiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiNGMyYzdmYjMtM2JkYi00YTFjLWFlMWItYTI1NmZhMmI1ZTU0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibWljcm9zZXJ2aWNpb3MiLCJzZXNzaW9uX3N0YXRlIjoiZDhhOWYwZjctYTM2OC00MjMwLTkwZGEtZDgyNjg0NjJlMWI4IiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWRpZ2l0YWxtZWRpYSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJkOGE5ZjBmNy1hMzY4LTQyMzAtOTBkYS1kODI2ODQ2MmUxYjgiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJhZG1pbiBkbSIsImdyb3VwcyI6WyIvYWRtaW4iXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW4iLCJnaXZlbl9uYW1lIjoiYWRtaW4iLCJmYW1pbHlfbmFtZSI6ImRtIiwiZW1haWwiOiJhZG1pbkBkaWdpdGFsbWVkaWEuY29tIn0.XjA85xMS5EOz4G-_wWvjDBw-gBx7W0509Ss85s-nD50IjVHxgxM9Jgukd0pmRpwhgUQxNJ6GbtkMscKftLrISkUFOQtVngsrq8999aYQViEVJOP2uqrEZNXjC87X6GXTxEtXW7k8C4dVkvrotLAWUSUGOo2A2AdHQRLxGVqlsirRzONWf82Hlt3RfgF-tQptpox0kSp-WN4e0gimj0wHqGt6FoRo344kCPy3qm7YQJGOBhM6ya9uVGUCSmoerdmoq5s2AaiVnCu-MsPz-iJpR7mEKTaV1f71sN9r9Wwo9vLQf1ozBMP7_vIqMQyER6Tmr6cJxjrzeolNkUikd5lw_A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/users/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"users",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save MongoUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJaUnF0Q1RXYjhjSFRfZkVCaVF0SGFXalZYS3lseVIwd0llSXBNSzc1WUNRIn0.eyJleHAiOjE2NzkzMjczODEsImlhdCI6MTY3OTMyNzA4MSwianRpIjoiMTExMmZkNGQtNDNjMS00YjdmLWE4NjktZWY0ODYwNTgyZmM1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgyL3JlYWxtcy9EaWdpdGFsTWVkaWEiLCJhdWQiOlsicmVhbG0tbWFuYWdlbWVudCIsImFjY291bnQiXSwic3ViIjoiNGMyYzdmYjMtM2JkYi00YTFjLWFlMWItYTI1NmZhMmI1ZTU0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibWljcm9zZXJ2aWNpb3MiLCJzZXNzaW9uX3N0YXRlIjoiMTI1NzEwZTEtYmIzMi00OGY4LTkwM2QtOGUyNmVlNWQxMTA1IiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWRpZ2l0YWxtZWRpYSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiMTI1NzEwZTEtYmIzMi00OGY4LTkwM2QtOGUyNmVlNWQxMTA1IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiYWRtaW4gZG0iLCJncm91cHMiOlsiL2FkbWluIl0sInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIiwiZ2l2ZW5fbmFtZSI6ImFkbWluIiwiZmFtaWx5X25hbWUiOiJkbSIsImVtYWlsIjoiYWRtaW5AZGlnaXRhbG1lZGlhLmNvbSJ9.DhsR_3DGld5HbGuLcneaXcSaV6Foq2NTJJeK2sDTDZWqGVH-DBFjSnlAPyQJvHHLk62pIlY3HM69ZTXggu5ha3_xzcYNm98n-aVxgmlQFRzAlO3IbqLewKg1kIi6ADnh4v1by2VeH40r5AhRUg8kQiK8ir4svPAc0XIEMcJXXCnJAVM-li7BIiCMjeoI8BrtGCVUXSBw__wVQere9b1NZJjkd7HeB46XRLuy8padlFQ3aoT6Ouo0iEkCqJsv75mjShI20X_NDAa8L--Lr-UrYra5gWIKpXhoUsm4ZkwOGnR64_vcFnkHemkHlmARwW3HmTRCbGuLws0dKb2VA4etvw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"provider\",\r\n    \"avatar\": null,\r\n    \"email\": \"provider@digitalmedia.com\",\r\n    \"firstName\": \"provider\",\r\n    \"lastName\": \"dm\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8087/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mongo Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJaUnF0Q1RXYjhjSFRfZkVCaVF0SGFXalZYS3lseVIwd0llSXBNSzc1WUNRIn0.eyJleHAiOjE2NzkzMjc5ODEsImlhdCI6MTY3OTMyNzY4MSwianRpIjoiZWYzZGFmN2QtZTg5Zi00ODU0LTlkZTAtYWU4YWYwYjhkMjhhIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgyL3JlYWxtcy9EaWdpdGFsTWVkaWEiLCJhdWQiOlsicmVhbG0tbWFuYWdlbWVudCIsImFjY291bnQiXSwic3ViIjoiNGMyYzdmYjMtM2JkYi00YTFjLWFlMWItYTI1NmZhMmI1ZTU0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibWljcm9zZXJ2aWNpb3MiLCJzZXNzaW9uX3N0YXRlIjoiYmI4MTlhNWYtZDIwNC00MjgwLTk5YWMtZmU1N2VlMmZjOTdjIiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWRpZ2l0YWxtZWRpYSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiYmI4MTlhNWYtZDIwNC00MjgwLTk5YWMtZmU1N2VlMmZjOTdjIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiYWRtaW4gZG0iLCJncm91cHMiOlsiL2FkbWluIl0sInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIiwiZ2l2ZW5fbmFtZSI6ImFkbWluIiwiZmFtaWx5X25hbWUiOiJkbSIsImVtYWlsIjoiYWRtaW5AZGlnaXRhbG1lZGlhLmNvbSJ9.PDkOmkTaT74EquN2VcHZTkw3sfUjOZPnRG0Racmy1r_0Y3J9Pz25MTcxe0ds5NOVcqWPcjreuSfUXL1x8fANOfaNYKyllNnzbyBkPsC7Iek1f-9gDHaMZOgCGUGO5BVJRqqTMkO55ErUmn077oiqWyxFI4XatE1FwXdq4qY0FYXmASa9eesnEsuZp-UKyo4MyWi1gaN0m0N4cQbw2HPa0m0gaYeBwGnc4KnkUlrQsBwd0m8xiEpnLpJNVKLpl5pPASkN4CZeOXYvdJpgkUNfB-8eiVv83b-VA844OwZ-gmIIQshZzhI3Cx0ED9Zin361tO_Z-IsD1-OGUlkxZ-IRPg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User (KeycloakRepository)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJaUnF0Q1RXYjhjSFRfZkVCaVF0SGFXalZYS3lseVIwd0llSXBNSzc1WUNRIn0.eyJleHAiOjE2NzkzMzI0ODEsImlhdCI6MTY3OTMzMjE4MSwianRpIjoiOGQ4NWE1ZmYtZWZkNS00NmU0LWIzNmQtZWNkZjRlNDMwODhhIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgyL3JlYWxtcy9EaWdpdGFsTWVkaWEiLCJhdWQiOlsicmVhbG0tbWFuYWdlbWVudCIsImFjY291bnQiXSwic3ViIjoiNGMyYzdmYjMtM2JkYi00YTFjLWFlMWItYTI1NmZhMmI1ZTU0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibWljcm9zZXJ2aWNpb3MiLCJzZXNzaW9uX3N0YXRlIjoiMTBhNzc3YTQtNDJhMi00MTVmLWJiOTQtZGFiNGMxMzY5ZDc1IiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWRpZ2l0YWxtZWRpYSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiMTBhNzc3YTQtNDJhMi00MTVmLWJiOTQtZGFiNGMxMzY5ZDc1IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiYWRtaW4gZG0iLCJncm91cHMiOlsiL2FkbWluIl0sInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIiwiZ2l2ZW5fbmFtZSI6ImFkbWluIiwiZmFtaWx5X25hbWUiOiJkbSIsImVtYWlsIjoiYWRtaW5AZGlnaXRhbG1lZGlhLmNvbSJ9.BmSxkQM_-ivK1Dckl3pmj9UkUdUvQ6eBkSoSro7wQB3AFijr7UZqtopWm35vUq7_dIxCBH0IJtEYUDVxAfhu5HulR29q83Rk7MbP40zxA_g_gtBQ6ki1A29msG5yJ_yono6nqWEvIYcoKznGhpR2NRqLcYcL-2D8VoSRdjoHULHNgtqw0bVEIkUQyoAT4YmsBSqk5H3HJoVOmYbsr5aZ1YtI-f9nyDkV4lwFC3WaZ8DvfnvphLZpmkCR6iffT-6jv4SsbE0i2MGFb9FzOKLupU_3y2nFgBaTyInvAvGxD-zq8Ikqye9Lnlk0rGgX6A9p70HHOz5WuInFb7RVNmdMEw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Michael\",\r\n    \"avatar\": null,\r\n    \"email\": \"michael@digitalmedia.com\",\r\n    \"firstName\": \"Michael\",\r\n    \"lastName\": \"dm\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8087/users/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User (Admin Only)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJaUnF0Q1RXYjhjSFRfZkVCaVF0SGFXalZYS3lseVIwd0llSXBNSzc1WUNRIn0.eyJleHAiOjE2Nzg4Mjc5ODgsImlhdCI6MTY3ODgyNzY4OCwianRpIjoiZmEyMzA3NWEtYjA2Mi00ZGJjLTgwYzgtZWIyY2M0M2I4Y2VlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgyL3JlYWxtcy9EaWdpdGFsTWVkaWEiLCJhdWQiOlsicmVhbG0tbWFuYWdlbWVudCIsImFjY291bnQiXSwic3ViIjoiNGMyYzdmYjMtM2JkYi00YTFjLWFlMWItYTI1NmZhMmI1ZTU0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibWljcm9zZXJ2aWNpb3MiLCJzZXNzaW9uX3N0YXRlIjoiMzdmZmQzYzEtMjhkNy00MTc5LTlmOTYtNDIyNGI3MTlhNzQzIiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWRpZ2l0YWxtZWRpYSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiMzdmZmQzYzEtMjhkNy00MTc5LTlmOTYtNDIyNGI3MTlhNzQzIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiYWRtaW4gZG0iLCJncm91cHMiOlsiL2FkbWluIl0sInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIiwiZ2l2ZW5fbmFtZSI6ImFkbWluIiwiZmFtaWx5X25hbWUiOiJkbSIsImVtYWlsIjoiYWRtaW5AZGlnaXRhbG1lZGlhLmNvbSJ9.jJONS9t_a2siboRDj1bM5TUcrpxTWjvwriFOwCJteeVTykMtw7LC8unkpmYQe0UQ9r_tlfWSVqNfJncn0iCai2gaz82xel1vZO4LjXIrrC7h7aI_SPcxspA8g5B4CYZnRxsn_Dnni7vTvyu7GHP7odrgJY5ruwlMgVo967H0e-GCxz-9hpccZodtJxCxqCxp-EArX7ixNgD4X5Gof5fjBvymkbRTDHUZ8WMJDk3Tz0Q2IBE_jOG5GnEZjiZqwRW6pMd4ya2JMOfCmMRC21TJLFtidqIvezodR04xd7XJLgZNy4l00bF9OiJefVX6u128sdNf2zEK_noQLUjrrlpF4Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Jhon\",\r\n    \"email\": \"jhon@digitalmedia.com\",\r\n    \"firstName\": \"Jhon\",\r\n    \"lastName\": \"dm\",\r\n    \"enabled\": true,\r\n    \"credentials\": [\r\n        {\r\n            \"temporary\": false,\r\n            \"type\": \"password\",\r\n            \"value\": \"jhon\"\r\n        }\r\n    ],\r\n    \"groups\": [\"client\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/admin/realms/DigitalMedia/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"admin",
+						"realms",
+						"DigitalMedia",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
