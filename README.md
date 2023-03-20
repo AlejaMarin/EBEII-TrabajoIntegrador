@@ -19,6 +19,7 @@
 6. [Ejercicio 6](#Ejercicio-6)
 7. [Keycloak Export](#Keycloak-Export)
 8. [Acceso a las Bases de Datos](#Bases-de-Datos)
+9. [Observaciones](#Observaciones)
 
 ***
 
@@ -152,9 +153,9 @@ En conclusión, habiendo realizado los ejercicios propuestos, se realiza la expo
 > [***JSON***](/realm-export.json)
 
  - Podemos guardar los usuarios "manualmente" a través de Postman, enviando un petición POST al endpoint del [UserController](/users-service\src\main\java\com\digitalmedia\users\controller\UserController.java) que está en el método creado para este fin, llamado `saveUser` (línea 58). Este método consiste en recibir en el cuerpo un objeto de tipo `User`, y a traves del repositorio de Mongo almacenarlo en la Base de Datos. En la [colección de Postman](/Postman/EBEII.postman_collection.json), esta petición es llamada "Save MongoUser". Ahora bien, esto no resuelve en sí nuestro problema, ya que solo estamos guardando los usuarios en la Base de Datos de users-service; más no lo estamos persistiendo en Keycloak.
- - Es por ello, que se me ocurrió hacer uso del Repositorio de Keycloak. Es decir, hacer uso de las funciones que nos provee la Admin REST API. En el [KeycloakRepository](/users-service/src/main/java/com/digitalmedia/users/repository/KeycloakRepository.java) creé un método llamado `createUser` (línea 26) que recibe como argumento un objetivo de tipo User, el cual posteriormente voy a solicitar como cuerpo en el Controller. Este método setea los atributos de User en un objeto de tipo UserRepresentation, y posteriormente setea una contraseña -en este caso, todo usuario creado siempre va a tener la misma contraseña ("digitalmedia"), para finalmente crear el usuario en nuestro reino de Keycloak. Ya desde Postman, realizamos la solicitud POST al endpoint que definí en el [UserController](/users-service\src\main\java\com\digitalmedia\users\controller\UserController.java) (línea 72); si obtenemos como respuesta un código 201, significa que nuestro usuario se creo correctamente y lo podemos ya visualizar desde la consola de Keycloak.
+ - Es por ello, que se me ocurrió hacer uso del Repositorio de Keycloak. Es decir, hacer uso de las funciones que nos provee la Admin REST API. En el [KeycloakRepository](/users-service/src/main/java/com/digitalmedia/users/repository/KeycloakRepository.java) creé un método llamado `createUser` (línea 26) que recibe como argumento un objeto de tipo User, el cual posteriormente voy a solicitar como cuerpo en el Controller. Este método setea los atributos de User en un objeto de tipo UserRepresentation, y posteriormente setea una contraseña -en este caso, todo usuario creado siempre va a tener la misma contraseña ("*digitalmedia*"), para finalmente crear el usuario en nuestro reino de Keycloak. Ya desde Postman, realizamos la solicitud POST al endpoint que definí en el [UserController](/users-service\src\main\java\com\digitalmedia\users\controller\UserController.java) (línea 72); si obtenemos como respuesta un código 201, significa que nuestro usuario se creó correctamente y lo podemos ya visualizar desde la consola de Keycloak.
    - **P.D.** Al crear usuarios desde el repositorio de Keycloak, no le estamos asociando un grupo; por lo cual, estando ya en la consola de Keycloak, podemos asignarlo.
- - Por otra parte, otra forma de crear a un usuario es a traves de Postman, enviando una petición POST a la URL: `http://localhost:8082/admin/realms/DigitalMedia/users`, enviando en el cuerpo un objeto de tipo UserRepresentation, así como también EL JWT de Autorización que tenga permisos de **admin** para gestionar usuarios. Con esta forma, se tiene la ventaja de que podemos agregar los parámetros que deseemos, entre ellos, el grupo al que queremos que nuestro usuario pertenezca (evidentemente, el grupo debe estar previamente creado o importado). A manera de ejemplo, tal como en la petición "Create User (Admin Only)" de la [colección de Postman](/Postman/EBEII.postman_collection.json), el objeto UserRepresentation se puede estructurar así:
+ - Por otra parte, otra forma de crear a un usuario es a traves de Postman, enviando una petición POST a la URL: `http://localhost:8082/admin/realms/DigitalMedia/users`, enviando en el cuerpo un objeto de tipo UserRepresentation, así como también el JWT de Autorización que tenga permisos de **admin** para gestionar usuarios. Con esta forma, se tiene la ventaja de que podemos agregar los parámetros que deseemos, entre ellos, el grupo al que queremos que nuestro usuario pertenezca (evidentemente, el grupo debe estar previamente creado o importado). A manera de ejemplo, tal como en la petición "Create User (Admin Only)" de la [colección de Postman](/Postman/EBEII.postman_collection.json), el objeto UserRepresentation se puede estructurar así:
 
          {
             "username": "Jhon",
@@ -172,7 +173,9 @@ En conclusión, habiendo realizado los ejercicios propuestos, se realiza la expo
             "groups": ["client"]
          }
 
-   - **P.D.** La URL previamente mencionada es la que nos provee la documentación de [Admin REST API](https://www.keycloak.org/docs-api/18.0/rest-api/#_users_resource)
+   - **P.D.** La URL previamente mencionada es la que nos provee la documentación de Keycloak [Admin REST API](https://www.keycloak.org/docs-api/18.0/rest-api/#_users_resource).
+
+> **INDPENDIENTE, de qué método elijamos, para poder probar nuestra solución, ¡es necesario que los usuarios *client*, *admin* y *proviver* estén creados!**
 
 ## Bases-de-Datos
 
@@ -205,3 +208,17 @@ Esto lo podemos hacer desde la terminal de cada contenedor localizada en el Dock
    > - Mostramos los datos de nuestro documento: `db.users.find()`
 
    ![moviesdb](/Images/usersdb.png)
+
+## Observaciones
+
+ - Una de las dificultes que no pude resolver fue la de realizar peticiones ya sea de tipo POST, PUT o DELETE a traves de Postman, con el Gateway. A pesar de enviar el JWT, siempre obtuve la misma respuesta: un HTML que correspondía a la vista de Login de Keycloak. Aquellas peticiones que son de tipo GET, las pude realizar desde el navegador para que me redirigiera al Login, y después de autenticarme poder visualizar la respuesta.
+ ![gateway_request](/Images/gateway_request.png)
+  - **P.D.** Si realizaba estas peticiones desde Postman pero utilizando el puerto en el que se estaba ejecutando la aplicación, no tenía inconveniente.
+
+ - Teniendo en cuenta, el [Diagrama](/Images/Diagrama.png) se puede observar como los tres microservicios tiene más de una instancia en ejecución. Para lograr esto, solo basta con modificar los archivos de configuración de los diferentes microservicios y modificar el valor de la propiedad "`server:port`" por `${PORT:0}` y así, logramos que cada instancia se ejecute en puertos dinámicos. Al momento de realizar los respectivos ejercicios se estableció un puerto especifíco para cada microservicio, tal así que:
+   - **movies-api**: http://localhost:8085/
+   - **ms-bills**: http://localhost:8086/
+   - **users-service**: http://localhost:8087/
+
+ - Por otra parte, de acuerdo al [Diagrama](/Images/Diagrama.png), otra de las cosas a tener en cuenta, era que Keycloak contaba con dos instancias. Sin embargo, creí que esto se podía resolver desde el Docker Compose simplemente agregando otro service y cambiando el nombre del contenedor y el puerto... Resultó en que a pesar de que el Docker Compose se ejecutó correctamente y creo ambos contenedores con la imagen de Keycloak, al momento de ingresar a AMBAS consolas, a pesar de estar en puertos diferentes, al hacer Login en uno, y luego en el otro, como que entraba en conflicto y se cortaba las sesiones.
+ Así que, por falta de tiempo, preferí omitir este paso.

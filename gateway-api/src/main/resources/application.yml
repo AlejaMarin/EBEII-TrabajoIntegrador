@@ -20,10 +20,10 @@ spring:
           uri: lb://ms-bill
           predicates:
             - Path=/bills/**
-#        - id: users-service
-#          uri: lb://users-service
-#          predicates:
-#            - Path=/users/**
+        - id: users-service
+          uri: lb://users-service
+          predicates:
+            - Path=/users/**
 
   security:
     oauth2:
@@ -31,6 +31,7 @@ spring:
         provider:
           keycloak:
             issuer-uri: http://localhost:8082/realms/DigitalMedia
+            token-uri: http://localhost:8082/realms/DigitalMedia/protocol/openid-connect/token
         registration:
           api-gateway:
             provider: keycloak
