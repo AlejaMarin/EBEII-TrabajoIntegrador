@@ -173,7 +173,7 @@ En conclusión, habiendo realizado los ejercicios propuestos, se realiza la expo
 
    - **P.D.** La URL previamente mencionada es la que nos provee la documentación de Keycloak [Admin REST API](https://www.keycloak.org/docs-api/18.0/rest-api/#_users_resource). Y así como también podemos crear usuarios, podemos listarlos, simplemente cambiando de POST a GET (sin cuerpo). Su respuesta va a ser del tipo [response.json](/response.json)
 
-> **INDPENDIENTE, de qué método elijamos, para poder probar nuestra solución, ¡es necesario que los usuarios *client*, *admin* y *proviver* estén creados!**
+> **INDEPENDIENTEMENTE, de qué método elijamos, para poder probar nuestra solución, ¡es necesario que los usuarios *client*, *admin* y *proviver* estén creados!**
 
 ## Bases-de-Datos
 
@@ -212,8 +212,9 @@ Esto lo podemos hacer desde la terminal de cada contenedor localizada en el Dock
  - Una de las dificultes que no pude resolver fue la de realizar peticiones ya sea de tipo POST, PUT o DELETE a traves de Postman, con el Gateway. A pesar de enviar el JWT, siempre obtuve la misma respuesta: un HTML que correspondía a la vista de Login de Keycloak. Aquellas peticiones que son de tipo GET, las pude realizar desde el navegador para que me redirigiera al Login, y después de autenticarme poder visualizar la respuesta.
  ![gateway_request](/Images/gateway_request.png)
   - **P.D.** Si realizaba estas peticiones desde Postman pero utilizando el puerto en el que se estaba ejecutando la aplicación, no tenía inconveniente.
-
- - Teniendo en cuenta, el [Diagrama](/Images/Diagrama.png) se puede observar como los tres microservicios tienen más de una instancia en ejecución. Para lograr esto, solo basta con modificar los archivos de configuración de los diferentes microservicios y modificar el valor de la propiedad "`server:port`" por `${PORT:0}` y así, logramos que cada instancia se ejecute en puertos dinámicos. Al momento de realizar los respectivos ejercicios se estableció un puerto especifíco para cada microservicio, tal así que:
+ 
+ ![Diagrama](/Images/Diagrama.png)
+- Teniendo en cuenta, el [Diagrama](/Images/Diagrama.png) se puede observar como los tres microservicios tienen más de una instancia en ejecución. Para lograr esto, solo basta con modificar los archivos de configuración de los diferentes microservicios y modificar el valor de la propiedad "`server:port`" por `${PORT:0}` y así, logramos que cada instancia se ejecute en puertos dinámicos. Al momento de realizar los respectivos ejercicios se estableció un puerto especifíco para cada microservicio, tal así que:
    - **movies-api**: http://localhost:8085/
    - **ms-bills**: http://localhost:8086/
    - **users-service**: http://localhost:8087/
