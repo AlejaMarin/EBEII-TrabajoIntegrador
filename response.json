@@ -1,0 +1,86 @@
+[
+    {
+        "id": "4c2c7fb3-3bdb-4a1c-ae1b-a256fa2b5e54",
+        "createdTimestamp": 1677772058996,
+        "username": "admin",
+        "enabled": true,
+        "totp": false,
+        "emailVerified": false,
+        "firstName": "admin",
+        "lastName": "dm",
+        "email": "admin@digitalmedia.com",
+        "disableableCredentialTypes": [],
+        "requiredActions": [],
+        "notBefore": 0,
+        "access": {
+            "manageGroupMembership": true,
+            "view": true,
+            "mapRoles": true,
+            "impersonate": true,
+            "manage": true
+        }
+    },
+    {
+        "id": "917a12e9-f0c7-4af8-a28a-8ec113a5117f",
+        "createdTimestamp": 1677772010527,
+        "username": "client",
+        "enabled": true,
+        "totp": false,
+        "emailVerified": false,
+        "firstName": "client",
+        "lastName": "dm",
+        "email": "client@digitalmedia.com",
+        "disableableCredentialTypes": [],
+        "requiredActions": [],
+        "notBefore": 1678595995,
+        "access": {
+            "manageGroupMembership": true,
+            "view": true,
+            "mapRoles": true,
+            "impersonate": true,
+            "manage": true
+        }
+    },
+    {
+        "id": "ee4f1c5c-0ac3-45d1-b6aa-3a0411c4d204",
+        "createdTimestamp": 1678827707326,
+        "username": "jhon",
+        "enabled": true,
+        "totp": false,
+        "emailVerified": false,
+        "firstName": "Jhon",
+        "lastName": "dm",
+        "email": "jhon@digitalmedia.com",
+        "disableableCredentialTypes": [],
+        "requiredActions": [],
+        "notBefore": 0,
+        "access": {
+            "manageGroupMembership": true,
+            "view": true,
+            "mapRoles": true,
+            "impersonate": true,
+            "manage": true
+        }
+    },
+    {
+        "id": "845f6712-99a5-45ae-b268-2f85e6655829",
+        "createdTimestamp": 1677772101012,
+        "username": "provider",
+        "enabled": true,
+        "totp": false,
+        "emailVerified": false,
+        "firstName": "provider",
+        "lastName": "dm",
+        "email": "provider@digitalmedia.com",
+        "disableableCredentialTypes": [],
+        "requiredActions": [],
+        "notBefore": 0,
+        "access": {
+            "manageGroupMembership": true,
+            "view": true,
+            "mapRoles": true,
+            "impersonate": true,
+            "manage": true
+        }
+    }
+]
