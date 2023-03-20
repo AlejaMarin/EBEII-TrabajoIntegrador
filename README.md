@@ -18,6 +18,7 @@
 5. [Ejercicio 5](#Ejercicio-5)
 6. [Ejercicio 6](#Ejercicio-6)
 7. [Keycloak Export](#Keycloak-Export)
+8. [Acceso a las Bases de Datos](#Bases-de-Datos)
 
 ***
 
@@ -170,3 +171,37 @@ En conclusión, habiendo realizado los ejercicios propuestos, se realiza la expo
             ],
             "groups": ["client"]
          }
+
+   - **P.D.** La URL previamente mencionada es la que nos provee la documentación de [Admin REST API](https://www.keycloak.org/docs-api/18.0/rest-api/#_users_resource)
+
+## Bases-de-Datos
+
+Teniendo en cuenta que nuestras bases de datos se crearon a través de Docker Compose, podemos acceder a ellas igualmente. Esto a manera de verificación de que nuestros datos se estén almacenando correctamente.
+Esto lo podemos hacer desde la terminal de cada contenedor localizada en el Docker Desktop.
+
+ - **movies-api** (Mongo)
+   > - Ingresamos a la terminal del contenedor "`local_mongo`"
+   > - Nos conectamos al shell de Mongo a través del siguiente comando: `mongosh "mongodb://localhost:27017" --username root --authenticationDatabase moviesdb`
+   > - Ingresamos la contraseña ("*admin*")
+   > - Elegimos la base de datos: `use moviesdb`
+   > - Mostramos los datos de nuestro documento: `db.movies.find()`
+
+   ![moviesdb](/Images/moviesdb.png)
+
+ - **ms-bills** (MySQL)
+   > - Ingresamos a la terminal del contenedor "`local_mysql`"
+   > - Nos conectamos al cliente de MySQL a través del siguiente comando: `mysql -u user-bill -p`
+   > - Ingresamos la contraseña ("*password-bill*")
+   > - Elegimos la base de datos: `USE facturacion-service;`
+   > - Mostramos los datos de nuestra tabla: `SELECT * FROM bill;`
+
+   ![facturacion-service](/Images/facturacion-service.png)
+
+ - **users-service** (Mongo)
+   > - Ingresamos a la terminal del contenedor "`local_mongo`"
+   > - Nos conectamos al shell de Mongo a través del siguiente comando: `mongosh "mongodb://localhost:27017" --username root --authenticationDatabase usersdb`
+   > - Ingresamos la contraseña ("*admin*")
+   > - Elegimos la base de datos: `use usersdb`
+   > - Mostramos los datos de nuestro documento: `db.users.find()`
+
+   ![moviesdb](/Images/usersdb.png)
