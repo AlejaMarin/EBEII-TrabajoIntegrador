@@ -171,7 +171,7 @@ En conclusión, habiendo realizado los ejercicios propuestos, se realiza la expo
             "groups": ["client"]
          }
 
-   - **P.D.** La URL previamente mencionada es la que nos provee la documentación de Keycloak [Admin REST API](https://www.keycloak.org/docs-api/18.0/rest-api/#_users_resource).
+   - **P.D.** La URL previamente mencionada es la que nos provee la documentación de Keycloak [Admin REST API](https://www.keycloak.org/docs-api/18.0/rest-api/#_users_resource). Y así como también podemos crear usuarios, podemos listarlos, simplemente cambiando de POST a GET (sin cuerpo). Su respuesta va a ser del tipo [response.json](/response.json)
 
 > **INDPENDIENTE, de qué método elijamos, para poder probar nuestra solución, ¡es necesario que los usuarios *client*, *admin* y *proviver* estén creados!**
 
@@ -220,3 +220,5 @@ Esto lo podemos hacer desde la terminal de cada contenedor localizada en el Dock
 
  - Por otra parte, de acuerdo al [Diagrama](/Images/Diagrama.png), otra de las cosas a tener en cuenta, era que Keycloak contaba con dos instancias. Sin embargo, creí que esto se podía resolver desde el Docker Compose simplemente agregando otro service y cambiando el nombre del contenedor y el puerto... Resultó en que a pesar de que el Docker Compose se ejecutó correctamente y creo ambos contenedores con la imagen de Keycloak, al momento de ingresar a AMBAS consolas, a pesar de estar en puertos diferentes, al hacer Login en uno, y luego en el otro, como que entraba en conflicto y se cortaban las sesiones.
  Así que por falta de tiempo para investigar más sobre esto, preferí omitir este paso.
+
+***
